@@ -1,4 +1,4 @@
-package com.palomazapata.spotifyjava;
+package com.palomazapata.spotifyjava.login.view;
 
 import android.os.Bundle;
 import android.widget.Toast;
