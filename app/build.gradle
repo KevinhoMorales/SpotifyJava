@@ -30,6 +30,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+    // ViewBinding: genera clases de binding por cada layout XML
+    // Permite acceder a las vistas sin findViewById (más seguro y limpio)
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {

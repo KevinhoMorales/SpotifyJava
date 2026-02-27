@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    LAYOUT XML - activity_login.xml
+    ¿Qué es un Layout XML?
+    Un Layout XML es un archivo que define la ESTRUCTURA VISUAL de una pantalla.
+    En lugar de crear vistas con código Java, describimos la interfaz en XML.
+    Android "infla" (convierte) este XML en objetos View que se muestran en pantalla.
+
+    Ventajas del XML:
+    - Separación entre diseño (XML) y lógica (Java)
+    - Fácil de modificar sin tocar código
+    - Android Studio ofrece vista previa en tiempo real
+    - Reutilizable y mantenible
+
+    Este layout usa ConstraintLayout: permite posicionar elementos con restricciones
+    (ej: "este botón está 24dp debajo del campo de texto").
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".LoginActivity">
+
+    <!--
+        TÍTULO PRINCIPAL - TextView
+        Un TextView es un componente que muestra TEXTO en pantalla.
+        No es editable por el usuario (a diferencia del EditText).
+        Usamos textSize grande para que sea el título destacado de la app.
+    -->
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spotify"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!--
+        CAMPO DE USUARIO - EditText
+        Un EditText es un campo de texto donde el usuario puede ESCRIBIR.
+        Es editable, a diferencia del TextView.
+        drawableStart: muestra un icono a la izquierda del texto (icono nativo del sistema).
+        inputType="text": acepta texto normal (podría ser "textEmailAddress" para emails).
+        hint: texto placeholder que desaparece cuando el usuario escribe.
+    -->
+    <EditText
+        android:id="@+id/editTextUsuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:drawableStart="@android:drawable/ic_menu_myplaces"
+        android:drawablePadding="8dp"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
+
+    <!--
+        CAMPO DE CONTRASEÑA - EditText
+        Similar al campo de usuario, pero con:
+        - inputType="textPassword": oculta los caracteres con puntos (••••)
+        - Icono de candado para indicar que es un campo seguro
+    -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@android:drawable/ic_lock_lock"
+        android:drawablePadding="8dp"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+
+    <!--
+        BOTÓN DE INICIO DE SESIÓN - Button
+        Un Button es un componente que el usuario puede PRESIONAR (click).
+        Cuando se presiona, ejecutamos código (a través de un Listener).
+        El texto del botón indica la acción que realizará.
+    -->
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Iniciar sesión"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <!--
+        TEXTO "¿OLVIDASTE TU CONTRASEÑA?" - TextView
+        TextView pequeño debajo del botón.
+        Por ahora solo muestra texto (en futuras clases podría ser clickeable).
+    -->
+    <TextView
+        android:id="@+id/textViewOlvidaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
