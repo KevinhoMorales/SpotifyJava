@@ -1,11 +1,13 @@
 package com.palomazapata.spotifyjava.login.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.palomazapata.spotifyjava.databinding.ActivityLoginBinding;
+import com.palomazapata.spotifyjava.register.view.RegisterActivity;
 
 /**
  * =============================================================================
@@ -52,8 +54,39 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Configurar el listener del botón
+        // Configurar el listener del botón de login
         configurarBotonLogin();
+        // Configurar la navegación hacia la pantalla de registro
+        configurarNavegacionARegistro();
+    }
+
+    /**
+     * Navegación desde Login hacia Register
+     *
+     * ¿Qué es un Intent?
+     * ------------------
+     * Un Intent es un objeto que describe una "intención" de hacer algo:
+     * - Abrir otra pantalla (Activity)
+     * - Lanzar un servicio, abrir un enlace, etc.
+     *
+     * ¿Qué es un Intent explícito?
+     * ----------------------------
+     * Es un Intent donde indicamos EXPLÍCITAMENTE qué componente abrir
+     * (por ejemplo: RegisterActivity). Indicamos la clase de destino y el contexto.
+     *
+     * ¿Qué hace startActivity()?
+     * --------------------------
+     * startActivity(intent) le dice a Android: "abre la pantalla que pide este Intent".
+     * Android crea la nueva Activity y la muestra. La pantalla actual (Login) queda
+     * debajo en la pila; al pulsar "atrás" el usuario vuelve a Login.
+     */
+    private void configurarNavegacionARegistro() {
+        binding.textViewNoTienesCuenta.setOnClickListener(v -> {
+            // Aquí creamos el Intent: queremos abrir RegisterActivity
+            Intent intent = new Intent(this, RegisterActivity.class);
+            // startActivity() inicia la nueva pantalla
+            startActivity(intent);
+        });
     }
 
     /**

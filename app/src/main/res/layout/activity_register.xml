@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    LAYOUT XML - activity_login.xml
+    LAYOUT XML - activity_register.xml
     ¿Qué es un Layout XML?
     Un Layout XML es un archivo que define la ESTRUCTURA VISUAL de una pantalla.
     En lugar de crear vistas con código Java, describimos la interfaz en XML.
@@ -21,20 +21,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".login.view.LoginActivity">
+    tools:context=".register.view.RegisterActivity">
 
     <!--
         TÍTULO PRINCIPAL - TextView
         Un TextView es un componente que muestra TEXTO en pantalla.
-        No es editable por el usuario (a diferencia del EditText).
-        Usamos textSize grande para que sea el título destacado de la app.
+        No es editable por el usuario. Usamos textSize grande para el título "Crear cuenta".
     -->
     <TextView
         android:id="@+id/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Spotify"
-        android:textSize="36sp"
+        android:text="Crear cuenta"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTextUsuario"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,21 +42,22 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <!--
-        CAMPO DE USUARIO - EditText
+        CAMPO NOMBRE DE USUARIO - EditText
+        ¿Qué es un EditText?
         Un EditText es un campo de texto donde el usuario puede ESCRIBIR.
         Es editable, a diferencia del TextView.
-        drawableStart: muestra un icono a la izquierda del texto (icono nativo del sistema).
-        inputType="text": acepta texto normal (podría ser "textEmailAddress" para emails).
+        drawableStart: icono a la izquierda (icono nativo de usuario).
+        inputType="text": acepta texto normal.
         hint: texto placeholder que desaparece cuando el usuario escribe.
     -->
     <EditText
         android:id="@+id/editTextUsuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:drawableStart="@android:drawable/ic_menu_myplaces"
         android:drawablePadding="8dp"
-        android:hint="Usuario"
+        android:hint="Nombre de usuario"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,10 +65,28 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
 
     <!--
-        CAMPO DE CONTRASEÑA - EditText
-        Similar al campo de usuario, pero con:
-        - inputType="textPassword": oculta los caracteres con puntos (••••)
-        - Icono de candado para indicar que es un campo seguro
+        CAMPO CORREO ELECTRÓNICO - EditText
+        inputType="textEmailAddress": teclado adaptado para escribir emails (@, .com).
+        Icono nativo tipo email (sobre/correo).
+    -->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@android:drawable/ic_dialog_email"
+        android:drawablePadding="8dp"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+
+    <!--
+        CAMPO CONTRASEÑA - EditText
+        inputType="textPassword: oculta los caracteres con puntos (••••).
+        Icono nativo candado para indicar campo seguro.
     -->
     <EditText
         android:id="@+id/editTextPassword"
@@ -82,39 +100,54 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <!--
-        BOTÓN DE INICIO DE SESIÓN - Button
-        Un Button es un componente que el usuario puede PRESIONAR (click).
-        Cuando se presiona, ejecutamos código (a través de un Listener).
-        El texto del botón indica la acción que realizará.
+        CAMPO REPETIR CONTRASEÑA - EditText
+        Mismo icono (candado) e inputType para que el usuario confirme la contraseña.
     -->
-    <Button
-        android:id="@+id/buttonLogin"
+    <EditText
+        android:id="@+id/editTextRepetirPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Iniciar sesión"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@android:drawable/ic_lock_lock"
+        android:drawablePadding="8dp"
+        android:hint="Repetir contraseña"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <!--
-        TEXTO "¿NO TIENES CUENTA?" - TextView
-        TextView pequeño debajo del botón. Al hacer click abre la pantalla de registro.
+        BOTÓN REGISTRARSE - Button
+        Un Button es un componente que el usuario puede PRESIONAR (click).
+        Cuando se presiona, ejecutamos código a través de un Listener (en la Activity).
+    -->
+    <Button
+        android:id="@+id/buttonRegistrarse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Registrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRepetirPassword" />
+
+    <!--
+        TEXTO "¿YA TIENES CUENTA?" - TextView
+        TextView pequeño debajo del botón. Por ahora solo muestra texto.
     -->
     <TextView
-        android:id="@+id/textViewNoTienesCuenta"
+        android:id="@+id/textViewYaTienesCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="¿No tienes cuenta?"
+        android:text="¿Ya tienes cuenta?"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegistrarse" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

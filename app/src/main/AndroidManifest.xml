@@ -20,6 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- RegisterActivity: pantalla de registro (clase 2), navegación a Profile (clase 3) -->
+        <activity
+            android:name=".register.view.RegisterActivity"
+            android:exported="false" />
+        <!-- ProfileActivity: perfil del usuario, recibe nombre y correo por Intent (clase 3) -->
+        <activity
+            android:name=".profile.view.ProfileActivity"
+            android:exported="false" />
         <!-- MainActivity: se usará en clases posteriores -->
         <activity
             android:name=".MainActivity"
